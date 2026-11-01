@@ -1,4 +1,4 @@
-name: Test setup-rclone/update-config
+name: Test setup-bclone/update-config
 on:
   push:
     paths:
@@ -25,7 +25,7 @@ jobs:
           rclone_config=${{ github.run_id }}
           echo $rclone_config | tee ~/.config/rclone/rclone.conf
           
-      - name: Update Rclone config using setup-rclone/update-config
+      - name: Update bclone config using setup-bclone/update-config
         uses: BenjiThatFoxGuy/setup-bclone/update-config@main
         with:
           rclone_config_secret_name: ${{ matrix.os == 'macos-latest' && 'RCLONE_CONFIG_UPDATE_TEST_MACOS' || 'RCLONE_CONFIG_UPDATE_TEST_UBUNTU' }}
@@ -46,7 +46,7 @@ jobs:
           $rclone_config
           [IO.File]::WriteAllBytes("$env:APPDATA\rclone\rclone.conf", [Text.Encoding]::UTF8.GetBytes($rclone_config))
           
-      - name: Update Rclone config using setup-rclone/update-config
+      - name: Update bclone config using setup-bclone/update-config
         uses: BenjiThatFoxGuy/setup-bclone/update-config@main
         with:
           rclone_config_secret_name: RCLONE_CONFIG_UPDATE_TEST_WINDOWS

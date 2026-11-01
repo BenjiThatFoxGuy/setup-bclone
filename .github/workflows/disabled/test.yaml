@@ -1,9 +1,9 @@
 # This is a test workflow used for testing BenjiThatFoxGuy/setup-bclone action if it works or not.
-# This is not an example workflow that you will use to use setup-rclone.
-# If you forked this repository in order to use setup-rclone, you are doing it wrong. You need to create your own repository and use it there.
+# This is not an example workflow that you will use to use setup-bclone.
+# If you forked this repository in order to use setup-bclone, you are doing it wrong. You need to create your own repository and use it there.
 # You are only going to use this if you help to develop, or create your own version of this action.
 
-name: Test setup-rclone
+name: Test setup-bclone
 on:
   push:
     paths:
@@ -27,19 +27,19 @@ jobs:
         version: [latest, "${{ vars.SPECIFIED_VERSION }}"] # Set the SPECIFIED_VERSION variable to the last previous version in order to pass this test
         
     steps:
-      - name: Setup Rclone using setup-rclone
+      - name: Setup bclone using setup-bclone
         uses: BenjiThatFoxGuy/setup-bclone@main
         with:
-          rclone_config: ${{ secrets.RCLONE_CONFIG_B64 }} # Refer to setup-rclone wiki in order to pass this test
+          rclone_config: ${{ secrets.RCLONE_CONFIG_B64 }} # Refer to setup-bclone wiki in order to pass this test
           version: ${{ matrix.version }}
           
-      - name: Test Rclone by listing remotes
+      - name: Test bclone by listing remotes
         run: rclone listremotes
         
-      - name: Test Rclone by listing test remote
+      - name: Test bclone by listing test remote
         run: 'rclone lsd rclone-test-remote:'
         
-      - name: Test Rclone by checking version
+      - name: Test bclone by checking version
         run: rclone version
         
   test-with-config-plain-text:
@@ -51,7 +51,7 @@ jobs:
         version: [latest, "${{ vars.SPECIFIED_VERSION }}"]
         
     steps:
-      - name: Setup Rclone using setup-rclone
+      - name: Setup bclone using setup-bclone
         uses: BenjiThatFoxGuy/setup-bclone@main
         with:
           rclone_config: |
@@ -61,10 +61,10 @@ jobs:
           disable_base64: true
           version: ${{ matrix.version }}
           
-      - name: Test Rclone by listing test remote
+      - name: Test bclone by listing test remote
         run: 'rclone lsd rclone-test-remote:'
         
-      - name: Test Rclone by checking version
+      - name: Test bclone by checking version
         run: rclone version
         
   test-config-less:
@@ -76,13 +76,13 @@ jobs:
         version: [latest, "${{ vars.SPECIFIED_VERSION }}"]
         
     steps:
-      - name: Setup Rclone using setup-rclone
+      - name: Setup bclone using setup-bclone
         uses: BenjiThatFoxGuy/setup-bclone@main
         with:
           version: ${{ matrix.version }}
           
-      - name: Test Rclone by listing config-less test remote
+      - name: Test bclone by listing config-less test remote
         run: 'rclone lsd --http-url https://beta.rclone.org/test/ :http:'
         
-      - name: Test Rclone by checking version
+      - name: Test bclone by checking version
         run: rclone version

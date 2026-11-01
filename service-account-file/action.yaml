@@ -1,5 +1,5 @@
-name: Rclone service account file
-description: Add service account file for setup-rclone
+name: bclone service account file
+description: Add service account file for setup-bclone
 branding:
   icon: cloud
   color: blue
