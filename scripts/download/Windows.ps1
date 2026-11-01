@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 Set-StrictMode -Version Latest
-Write-Host ::group::Downloading Rclone $env:version for Windows
+Write-Host ::group::Downloading bclone $env:version for Windows
 $base = "$env:GITHUB_SERVER_URL/benjithatfoxguy/bclone/releases/download/$env:version"
 
 # Releases from v1.76.0 ship bclone-*.zip holding bclone.exe; older ones ship

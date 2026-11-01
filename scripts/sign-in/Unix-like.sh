@@ -1,6 +1,6 @@
 #!/bin/sh
 set -eu
-echo ::group::Signing in to Rclone using Rclone config
+echo ::group::Signing in to bclone using bclone config
 mkdir -p ~/.config/rclone
 if [ "$disable_base64" = true ]
 then
